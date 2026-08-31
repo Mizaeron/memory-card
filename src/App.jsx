@@ -1,5 +1,7 @@
+import DisplayCards from "./displaycards";
+
 function App() {
-  return <h1>Hello</h1>;
+  return <DisplayCards />;
 }
 
 export default App;
