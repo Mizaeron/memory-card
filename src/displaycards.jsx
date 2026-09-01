@@ -5,7 +5,7 @@ function DisplayCards() {
 
   useEffect(() => {
     async function getData() {
-      const ids = [38, 39, 40];
+      const ids = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49];
       const results = await Promise.all(
         ids.map(async (id) => {
           const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -20,11 +20,14 @@ function DisplayCards() {
 
   if (!data) return <p>Loading...</p>;
   return (
-    <div>
+    <div className="cards">
       {data.map((pokemon) => (
-        <div key={pokemon.id}>
+        <div className="poke" key={pokemon.id}>
           <h2>{pokemon.name}</h2>
-          <img src={pokemon.sprites.front_default} alt="{pokemon.name}" />
+          <img
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt={pokemon.name}
+          />
         </div>
       ))}
     </div>

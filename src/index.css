@@ -1,3 +1,46 @@
 body {
-  background-color: rgb(14, 114, 196);
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    oklch(20% 0.04 265.755) 0%,
+    oklch(35% 0.08 265.755) 50%,
+    oklch(20.8% 0.042 265.755) 100%
+  );
+  color: aliceblue;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke {
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 12px;
+  width: 240px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.poke:hover {
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+.poke img {
+  width: 100%;
+  display: block;
+}
+
+.poke h2 {
+  border: 1px solid white;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
 }
