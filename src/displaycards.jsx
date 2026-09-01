@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function DisplayCards() {
+function DisplayCards({ onCardClick }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,11 @@ function DisplayCards() {
   return (
     <div className="cards">
       {data.map((pokemon) => (
-        <div className="poke" key={pokemon.id}>
+        <div
+          className="poke"
+          key={pokemon.id}
+          onClick={() => onCardClick(pokemon.name)}
+        >
           <h2>{pokemon.name}</h2>
           <img
             src={pokemon.sprites.other["official-artwork"].front_default}
