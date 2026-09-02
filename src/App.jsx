@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DisplayCards from "./displaycards";
 import ScoreBoard from "./scoreboard";
 
 function App() {
-  const [clickInfo, setClickInfo] = useState(null);
+  const [pokemons, addPokemons] = useState([]);
 
-  const handleClick = (p) => {
-    setClickInfo(p);
+  useEffect(() => {
+    console.log("pokemons updated:", pokemons);
+  }, [pokemons]);
+
+  const handleClick = (pokemon) => {
+    if (!pokemons.includes(pokemon.id))
+      addPokemons((pokemons) => [...pokemons, pokemon.id]);
   };
+
   return (
     <>
-      <ScoreBoard clickInfo={clickInfo} />
+      <ScoreBoard pokemons={pokemons} />
       <DisplayCards onCardClick={handleClick} />
     </>
   );

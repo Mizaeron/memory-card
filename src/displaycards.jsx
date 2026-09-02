@@ -16,6 +16,8 @@ function DisplayCards({ onCardClick }) {
     }
 
     getData();
+
+    function randomise() {}
   }, []);
 
   if (!data) return <p>Loading...</p>;
@@ -25,7 +27,7 @@ function DisplayCards({ onCardClick }) {
         <div
           className="poke"
           key={pokemon.id}
-          onClick={() => onCardClick(pokemon.name)}
+          onClick={() => onCardClick(pokemon)}
         >
           <h2>{pokemon.name}</h2>
           <img
