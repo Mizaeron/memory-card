@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DisplayCards from "./displaycards";
 import ScoreBoard from "./scoreboard";
 
 function App() {
   const [pokemons, addPokemons] = useState([]);
   const [score, setScore] = useState(null);
-
-  useEffect(() => {
-    console.log("pokemons updated:", pokemons);
-    console.log(score);
-  }, [pokemons, score]);
+  const [bestScore, setBestScore] = useState(null);
 
   const handleClick = (pokemon) => {
     if (!pokemons.includes(pokemon.id)) {
@@ -21,10 +17,18 @@ function App() {
     }
   };
 
+  const checkScore = () => {
+    if (score > bestScore) setBestScore(score);
+  };
   return (
     <>
-      <ScoreBoard count={score} />
-      <DisplayCards onCardClick={handleClick} />
+      <ScoreBoard count={score} best={bestScore} />
+      <DisplayCards
+        onCardClick={(card) => {
+          handleClick(card);
+          checkScore();
+        }}
+      />
     </>
   );
 }

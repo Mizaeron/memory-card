@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
 
+function shuffle(array) {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 function DisplayCards({ onCardClick }) {
   const [data, setData] = useState(null);
 
@@ -16,9 +25,12 @@ function DisplayCards({ onCardClick }) {
     }
 
     getData();
-
-    function randomise() {}
   }, []);
+
+  const handleClick = (pokemon) => {
+    onCardClick(pokemon);
+    setData((prev) => shuffle(prev));
+  };
 
   if (!data) return <p>Loading...</p>;
   return (
@@ -27,7 +39,7 @@ function DisplayCards({ onCardClick }) {
         <div
           className="poke"
           key={pokemon.id}
-          onClick={() => onCardClick(pokemon)}
+          onClick={() => handleClick(pokemon)}
         >
           <h2>{pokemon.name}</h2>
           <img
